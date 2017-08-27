@@ -33,4 +33,4 @@ public class HelloController {
 ## 运行
 Windows下双击项目根目录下的`gradlew.bat`运行，Linux下在根路径执行`./gradlew`程序运行。
 
-然后用浏览器访问 http://localhost:8080，便可以看到`Hello World!`消息。
+然后用浏览器访问 [http://localhost:8080](http://localhost:8080), 便可以看到`Hello World!`消息。
