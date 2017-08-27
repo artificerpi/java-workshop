@@ -15,6 +15,19 @@
 ### 创建一个`Hello World` HTTP响应.
 在`src/main/java/com/example/demo`目录下创建`HelloController.java`文件，内容如下：
 ``` java
+package com.example.demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HelloController {
+	@RequestMapping("/")
+	public String hello() {
+		return "Hello World!";
+	}
+
+}
 ```
 
 ## 运行
