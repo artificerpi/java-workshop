@@ -14,10 +14,16 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+war {
+    baseName = 'spring-boot-jsp-sample'
+    version = '0.0.1-SNAPSHOT'
+}
 
 repositories {
 	mavenCentral()
@@ -31,6 +37,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
     compile('javax.servlet:jstl')
+	compile('javax.servlet.jsp:jsp-api:2.2.1-b03')
 
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
