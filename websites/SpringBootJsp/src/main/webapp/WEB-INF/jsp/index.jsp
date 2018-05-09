@@ -1,4 +1,4 @@
-<%@ taglib prefix="mytags" uri = "/WEB-INF/tags/hello.tld" %>
+<%@ taglib prefix="mytags" uri = "/WEB-INF/tlds/hello.tld" %>
 <html>
     <body>
         JSP Works!
