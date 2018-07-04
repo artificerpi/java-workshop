@@ -20,7 +20,7 @@ import com.artificerpi.example.model.Message;
 public class HomeController {
     @Autowired
     OAuth2RestTemplate restTemplate;
-    @Value("${messages.url:http://localhost:7777}/api")
+    @Value("${messages.url:http://localhost:8082}/api")
     String messagesUrl;
 
     @RequestMapping("/")

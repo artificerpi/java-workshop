@@ -1,6 +1,4 @@
 security:
-  user:
-    password: password
   oauth2:
     client:
       client-id: demo
@@ -8,10 +6,17 @@ security:
       scope: read, write
       auto-approve-scopes: .*
     authorization:
-      check-token-access: permitAll()
+      check-token-access: isAuthenticated()
 server:
-  port: 9999
-  context-path: /uaa
+  port: 8081
+  servlet:
+    context-path: /uaa
+spring:
+  security:
+    user: 
+      name: user123
+      password: pass1234
+      roles: USER
 logging:
   level:
     org.springframework.security: DEBUG

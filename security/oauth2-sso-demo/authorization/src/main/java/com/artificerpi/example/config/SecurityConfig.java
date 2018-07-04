@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		    .key("uniqueAndSecret")
 			.and()
 			.requestMatchers()
-			.antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access")
+			.antMatchers("/**", "/login", "/oauth/authorize", "/oauth/confirm_access")
 			.and()
 			.authorizeRequests()
 			.anyRequest()
@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// @formatter:off
 		http.logout()
-			.logoutSuccessUrl("/")
+			.logoutSuccessUrl("/login")
 			.logoutUrl("/logout")
 			.deleteCookies("JSESSIONID")
 			.permitAll();

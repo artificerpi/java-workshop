@@ -9,3 +9,6 @@ https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsi
 
 ## migrate
 from springboot 1.5.7 to 2.0, oauth2 is moved into spring-security, and not managed by spring-boot-plugin
+
+## Reference
+* https://tools.ietf.org/html/rfc6749

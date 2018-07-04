@@ -1,4 +1,4 @@
-auth-server: http://localhost:9999/uaa
+auth-server: http://localhost:8081/uaa
 server:
   port: 8080
 security:
@@ -19,5 +19,3 @@ logging:
 spring:
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
-
-
