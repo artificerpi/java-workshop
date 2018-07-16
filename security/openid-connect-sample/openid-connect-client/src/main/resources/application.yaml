@@ -1,0 +1,9 @@
+# Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+server:
+  port: 9090
