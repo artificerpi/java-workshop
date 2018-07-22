@@ -1,4 +1,4 @@
-package com.artificerpi.customsedi.declsystem.config;
+package com.artificerpi.samples.oidcclient.config;
 
 import org.mitre.openid.connect.web.UserInfoInterceptor;
 import org.springframework.context.annotation.Configuration;

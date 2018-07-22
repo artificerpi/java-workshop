@@ -1,4 +1,4 @@
-package com.artificerpi.customsedi.declsystem.controller;
+package com.artificerpi.samples.oidcclient.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

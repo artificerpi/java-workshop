@@ -1,4 +1,4 @@
-package com.artificerpi.customsedi.declsystem.oidc;
+package com.artificerpi.samples.oidcclient.oidc;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -32,6 +32,7 @@ import org.mitre.openid.connect.client.service.impl.WebfingerIssuerService;
 import org.mitre.openid.connect.config.ServerConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
@@ -42,7 +43,7 @@ import com.nimbusds.jose.JWSAlgorithm;
 
 @Configuration
 public class OpenIDConnectConfig {
-	private static final String LOGIN_FORM_URL = "/openid_connect_login";
+	public static final String LOGIN_FORM_URL = "/openid_connect_login";
 	private static final String NAMED_ADMINS_SUBJECT = "90342.ASDFJWFA";
 	private static final String ISSUER = "http://localhost:8080/openid-connect-server-webapp/";
 	private static final String AUTHORIZATION_ENDPOINT_URI = "http://localhost:8080/openid-connect-server-webapp/authorize";
@@ -318,7 +319,7 @@ public class OpenIDConnectConfig {
 	@Bean
 	public JWKSetKeyStore defaultKeyStore() {
 		JWKSetKeyStore defaultKeyStore = new JWKSetKeyStore();
-//		defaultKeyStore.setLocation(new ClassPathResource("keystore:jwks"));
+		defaultKeyStore.setLocation(new ClassPathResource("keystore.jwks"));
 		
 		return defaultKeyStore;
 	}

@@ -1,6 +1,4 @@
-package com.artificerpi.customsedi.declsystem.oidc;
-
-import java.util.Arrays;
+package com.artificerpi.samples.oidcclient.oidc;
 
 import org.mitre.openid.connect.client.OIDCAuthenticationFilter;
 import org.mitre.openid.connect.client.service.impl.DynamicServerConfigurationService;
@@ -13,7 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.config.BeanIds;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -22,7 +21,7 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 
 @EnableGlobalMethodSecurity(securedEnabled=true)
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	private AuthenticationEntryPoint authenticationEntryPoint;
@@ -42,31 +41,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
 	     // @formatter:off
-		 http.authorizeRequests()
-             	.anyRequest().authenticated()
+		 http.requestMatchers()
+		 		.antMatchers("/login", OpenIDConnectConfig.LOGIN_FORM_URL)
+		 		.and()
+		 	.authorizeRequests()
+            	.anyRequest().authenticated()
              	.and()
-             	// TODO  AbstractPreAuthenticatedProcessingFilter subclasses
-             .addFilterBefore(openIdConnectAuthenticationFilter(), AbstractPreAuthenticatedProcessingFilter.class)
-		 	 .logout();
+			.addFilterBefore(openIdConnectAuthenticationFilter(), AbstractPreAuthenticatedProcessingFilter.class)
+		 	.logout();
 		 // @formatter:on
 		 
-//	     http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
+	     http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
     }
 
-	@Bean
+	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
 	@Override
-	protected AuthenticationManager authenticationManager() {
-	    return new ProviderManager(Arrays.asList(openIdConnectAuthenticationProvider));
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
+
+	@Override
+    protected void configure(
+      AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(openIdConnectAuthenticationProvider);
+    }
 	
 	/**
 	 * The authentication filter
 	 * @return
+	 * @throws Exception
 	 */
 	@Bean
-	public OIDCAuthenticationFilter openIdConnectAuthenticationFilter() {
+	public OIDCAuthenticationFilter openIdConnectAuthenticationFilter() throws Exception {
 		OIDCAuthenticationFilter filter = new OIDCAuthenticationFilter();
-		filter.setAuthenticationManager(authenticationManager());
+		filter.setAuthenticationManager(authenticationManagerBean());
 		filter.setIssuerService(hybridIssuerService);
 		filter.setServerConfigurationService(dynamicServerConfigurationService);
 		filter.setClientConfigurationService(staticClientConfigurationService);

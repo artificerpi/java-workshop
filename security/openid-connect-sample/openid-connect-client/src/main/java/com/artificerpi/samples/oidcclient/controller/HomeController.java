@@ -1,4 +1,4 @@
-package com.artificerpi.customsedi.declsystem.controller;
+package com.artificerpi.samples.oidcclient.controller;
 
 import java.security.Principal;
 import java.util.Locale;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
 	// filter reference so we can get class names and things like that.
 	@Autowired

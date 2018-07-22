@@ -1,4 +1,4 @@
-package com.artificerpi.customsedi.declsystem;
+package com.artificerpi.samples.oidcclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
