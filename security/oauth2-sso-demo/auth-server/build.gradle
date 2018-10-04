@@ -1,0 +1,9 @@
+
+dependencies {
+	// compatible with java 10
+	compile('javax.xml.bind:jaxb-api:2.3.0')
+	compile('com.sun.xml.bind:jaxb-impl:2.3.0')
+	compile('com.sun.xml.bind:jaxb-core:2.3.0')
+	compile('javax.activation:activation:1.1.1')
+}
+

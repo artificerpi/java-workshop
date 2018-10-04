@@ -1,0 +1,15 @@
+spring:
+  oauth2:
+    client:
+      client-id: java-client
+      client-secret: demo
+    resource:
+      token-info-uri: ${auth-server:http://localhost:8081/uaa}/oauth/check_token
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    
+server:
+  port: 8082
+  servlet:
+    context-path: /res
+  

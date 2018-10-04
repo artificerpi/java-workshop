@@ -1,12 +1,15 @@
 auth-server: http://localhost:8081/uaa
 server:
   port: 8080
+  session:
+    cookie:
+      name: UISESSION
 security:
   basic:
     enabled: false
   oauth2:
     client:
-      client-id: demo
+      client-id: java-client
       client-secret: demo
       access-token-uri: ${auth-server}/oauth/token
       user-authorization-uri: ${auth-server}/oauth/authorize

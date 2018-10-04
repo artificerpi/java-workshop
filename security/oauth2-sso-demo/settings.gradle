@@ -1,1 +1,2 @@
-include 'ui', 'authorization', 'ui'
+rootProject.name='oauth2-sso-demo'
+include 'auth-server', 'resource-server', 'ui'
