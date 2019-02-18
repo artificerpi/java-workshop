@@ -10,8 +10,8 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
 @EnableAuthorizationServer
+@SpringBootApplication
 @RestController
 public class AuthorizationApplication {
 	@Profile("!cloud")

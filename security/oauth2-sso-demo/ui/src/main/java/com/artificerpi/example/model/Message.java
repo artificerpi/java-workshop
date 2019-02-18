@@ -3,32 +3,37 @@ package com.artificerpi.example.model;
 import java.util.Date;
 
 public class Message {
-	public String text;
-	public String username;
-	public Date createdAt;
+  private String text;
+  private String username;
+  private Date createdAt;
 
-	public String getText() {
-		return text;
-	}
+  public String getText() {
+    return text;
+  }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+  public void setText(String text) {
+    this.text = text;
+  }
 
-	public String getUsername() {
-		return username;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+  public Date getCreatedAt() {
+    return createdAt;
+  }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Override
+  public String toString() {
+    return "Message [text=" + text + ", username=" + username + ", createdAt=" + createdAt + "]";
+  }
 
 }

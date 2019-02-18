@@ -8,18 +8,23 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @Order(-20)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+  
+    private static final String LOGIN_URI = "/login";
+    private static final String LOGOUT_URI = "/logout";
+    
+    
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http.formLogin()
-			.loginPage("/login")
+			.loginPage(LOGIN_URI)
 			.permitAll()
 			.and()
 		    .rememberMe()
 		    .key("uniqueAndSecret")
 			.and()
 			.requestMatchers()
-			.antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access", "/oauth/error")
+			.antMatchers("/", LOGIN_URI, "/oauth/authorize", "/oauth/confirm_access", "/oauth/error")
 			.and()
 			.authorizeRequests()
 			.anyRequest()
@@ -28,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// @formatter:off
 		http.logout()
-			.logoutSuccessUrl("/login")
-			.logoutUrl("/logout")
+			.logoutSuccessUrl(LOGIN_URI)
+			.logoutUrl(LOGOUT_URI)
 			.deleteCookies("JSESSIONID")
 			.permitAll();
 		// @formatter:on
